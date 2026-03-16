@@ -1,0 +1,66 @@
+df = pd.read_csv('clientes-v2-tratados.csv')
+
+print(df.head().to_string())
+print(df.tail().to_string())
+
+print("\n==========QTD_linhas_e_colunas============\n")
+print(df.shape)
+print("\n============= tipo_colunas================\n")
+print(df.dtypes)
+print("\n=============nome_colunas================\n")
+print(df.columns)
+print("\n=================================\n")
+print(df.info())
+
+
+print("\n=================================\n")
+print("\n=================================\n")
+print("\n=================================\n")
+
+print("\n=================================\n")
+print(df.describe())
+print("\n=================================\n")
+print(df.corr(numeric_only=True))
+print("\n=================================\n")
+print(df['estado'].unique())
+print("\n=================================\n")
+print(df['nivel_educacao'].value_counts())
+
+
+print("\n=================================\n")
+print("\n=================================\n")
+print("\n=================================\n")
+
+
+
+print("\n====QTD_nulos_por_coluna/========\n")
+print(df.isnull().sum())
+print("\n=========total_duplicados=========\n")
+print(df.duplicated().sum())
+print("\n==========duplicados=============\n")
+print(df[df.duplicated()])
+print("\n==========quais_linhas_repetidas=======================\n")
+print(df.duplicated())
+
+
+print("\n#################################\n")
+print("\n#################################\n")
+print("\n#################################\n")
+print("\n#################################\n")
+
+
+print("\n=========apagando_duplicados_nulos==========\n")
+df = df.drop_duplicates()
+print("\n=================================\n")
+df = df.drop_duplicates(subset=['estado'], keep='first')
+print("\n=================================\n")
+
+
+print("\n=================================\n")
+df = df.dropna()
+print("\n=================================\n")
+df = df.dropna(subset=['estado'])
+print("\n=================================\n")
+df = df.fillna(0)
+print("\n=================================\n")
+df['estado'] = df['estado'].fillna('Desconhecido')
